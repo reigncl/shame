@@ -14,10 +14,9 @@ let harvest = new Harvest({
     });
 
 
-
-(async () => {
+exports.main = async () => {
   
-  try {
+  
     
     let slackUsers = await slack.users.list({token:process.env.SLACK_TOKEN, limit:200})
     let members = slackUsers.members.filter(u => !u.deleted && !u.is_bot)
@@ -99,7 +98,5 @@ let harvest = new Harvest({
     }
     
   
-  } catch (e) {
-    console.warn(e)
-  }
-})()
+
+}
